@@ -26,3 +26,5 @@ around apply_params => sub {
 };
 
 1;
+
+# ABSTRACT: called by MooseX::RemoteName::Meta::Trait::Role
