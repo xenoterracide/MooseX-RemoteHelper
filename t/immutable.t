@@ -9,7 +9,6 @@ use Test::Moose;
 	use MooseX::RemoteName;
 
 	has attr => (
-		traits      => ['RemoteName'],
 		remote_name => 'attribute',
 		isa         => 'Str',
 		is          => 'ro',

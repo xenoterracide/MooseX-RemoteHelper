@@ -4,16 +4,23 @@ use Test::More;
 use Test::Moose;
 
 {
-	package Test;
-	use Moose;
+	package Role;
+	use Moose::Role;
 	use MooseX::RemoteName;
 
 	has attr => (
-		isa         => 'Str',
-		is          => 'ro',
-		required    => 1,
 		remote_name => 'attribute',
+		isa         => 'Str',
+		required    => 1,
+		is          => 'ro',
 	);
+}
+{
+	package Test;
+	use Moose;
+	with 'Role';
+
+	__PACKAGE__->meta->make_immutable;
 }
 
 my $t0 = Test->new({ attr => 'foo' });
@@ -31,5 +38,9 @@ can_ok $attr0, 'remote_name';
 
 ok $attr0->has_remote_name, 'has remote_name';
 is $attr0->remote_name, 'attribute', 'remote_name is attribute';
+
+my $t1 = Test->new({ attribute => 'foo' });
+
+is $t1->attr, 'foo', 'attr matches';
 
 done_testing;
