@@ -15,6 +15,8 @@ sub composition_class_roles {
 
 # ABSTRACT: meta role
 
-=head1 DESCRIPTION
+=method composition_class_roles
 
-The meta role is needed for use with immutable classes
+See L<Moose::Meta::Role/Construction>
+
+=cut
