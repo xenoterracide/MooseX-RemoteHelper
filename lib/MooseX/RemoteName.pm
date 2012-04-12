@@ -34,6 +34,7 @@ Moose::Exporter->setup_import_methods(
 1;
 
 # ABSTRACT: adds an attribute name to represent remote naming
+# SEEALSO: MooseX::Aliases
 
 =head1 SYNOPSIS
 
@@ -62,5 +63,18 @@ they are inconsistent with your Perl API. This module allows you to provide a
 remote name on your attribute. We also allow you to use the remote name as an
 C<init_arg> so that you can more easily construct a response from a remote
 response.
+
+=head1 ACKNOWLEDGMENTS
+
+This code is based or outright copied from L<MooseX::Aliases>
+
+=over
+
+=item * L<Chris Prather ( Perigrin )|https://metacpan.org/author/PERIGRIN>
+
+for help getting the basics working and understanding what some of this code
+does.
+
+=back
 
 =cut
