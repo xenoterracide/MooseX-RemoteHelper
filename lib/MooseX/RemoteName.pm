@@ -9,7 +9,11 @@ use Moose ();
 use Moose::Exporter;
 use MooseX::RemoteName::Meta::Trait::Attribute;
 
-Moose::Exporter->setup_import_methods;
+Moose::Exporter->setup_import_methods(
+	class_metaroles => {
+		class => ['MooseX::RemoteName::Meta::Trait::Class']
+	}
+);
 
 1;
 
