@@ -1,4 +1,5 @@
 package MooseX::RemoteName;
+use 5.008;
 use strict;
 use warnings;
 use namespace::autoclean;
@@ -32,4 +33,34 @@ Moose::Exporter->setup_import_methods(
 
 1;
 
-# ABSTRACT: MooseX::RemoteName
+# ABSTRACT: adds an attribute name to represent remote naming
+
+=head1 SYNOPSIS
+
+	{
+		package Message;
+		use Moose 2;
+		use MooseX::RemoteName;
+
+		has attr => (
+			remote_name => 'Attr',
+			isa         => 'Str',
+			is          => 'ro',
+		);
+		__PACKAGE__->meta->make_immutable;
+	}
+
+	my $message = Message->new({ Attr => 'foo' });
+
+	print $message->attr . "\n"; # foo
+
+=head1 DESCRIPTION
+
+Many Web APIs have key names that don't look good in a perl API, such as
+variants of camel case or even names that you don't want to use simply because
+they are inconsistent with your Perl API. This module allows you to provide a
+remote name on your attribute. We also allow you to use the remote name as an
+C<init_arg> so that you can more easily construct a response from a remote
+response.
+
+=cut
