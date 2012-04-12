@@ -20,7 +20,7 @@ around _inline_slot_initializer => sub {
 			;
 
 	return $self->orig(@_)
-		unless $attr->has_remote_name
+		unless $attr->has_remote_name ## no critic ( ControlStructures::ProhibitNegativeExpressionsInUnlessAndUntilConditions )
 			&& $attr->has_init_arg
 			&& $attr->remote_name ne $attr->init_arg
 			;
