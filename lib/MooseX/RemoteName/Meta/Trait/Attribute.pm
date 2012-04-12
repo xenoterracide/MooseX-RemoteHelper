@@ -21,7 +21,10 @@ around initialize_instance_slot => sub {
 	my ( $meta_instance, $instance, $params ) = @_;
 
 	return $self->orig(@_)
-		unless $self->has_remote_name && $self->has_init_arg;
+		unless $self->has_remote_name
+			&& $self->has_init_arg
+			&& $self->remote_name ne $self->init_arg
+			;
 
 	$params->{ $self->init_arg }
 		= delete $params->{ $self->remote_name }

@@ -19,8 +19,11 @@ around _inline_slot_initializer => sub {
 			&& $attr->meta->does_role('MooseX::RemoteName::Meta::Trait::Attribute')
 			;
 
-	return @orig_source
-		unless $attr->has_remote_name && $attr->has_init_arg;
+	return $self->orig(@_)
+		unless $attr->has_remote_name
+			&& $attr->has_init_arg
+			&& $attr->remote_name ne $attr->init_arg
+			;
 
 	my $init_arg = $attr->init_arg;
 
