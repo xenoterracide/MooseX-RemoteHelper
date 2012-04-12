@@ -5,7 +5,7 @@ use namespace::autoclean;
 
 # VERSION
 
-use Moose ();
+use Moose 2 ();
 use Moose::Exporter;
 use MooseX::RemoteName::Meta::Trait::Attribute;
 

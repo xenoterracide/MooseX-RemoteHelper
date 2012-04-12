@@ -29,7 +29,7 @@ around _inline_slot_initializer => sub {
 		. ' = delete $params->{' .  $attr->remote_name . '} '
 		. ' if $params->{' . $attr->remote_name . '}; '
 		, @orig_source
-		) 
+		)
 		;
 };
 
