@@ -1,5 +1,8 @@
 Revision history for {{$dist->name}}
 {{$NEXT}}
 
+0.001001  2012-04-12
+	- don't rename init arg if the remote name is the same as the init arg
+
 0.001000  2012-04-11
 	- initial release
