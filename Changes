@@ -1,6 +1,10 @@
 Revision history for {{$dist->name}}
 {{$NEXT}}
 
+0.001003  2012-04-13
+	- fix bug where skiping init_arg handling would have broken in a second
+	  place
+
 0.001002  2012-04-13
 	- add meta methods for handling serializing
 	- fix bug where skiping init_arg handling would have broken
