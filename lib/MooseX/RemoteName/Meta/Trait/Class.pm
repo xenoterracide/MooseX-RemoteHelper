@@ -19,7 +19,7 @@ around _inline_slot_initializer => sub {
 			&& $attr->meta->does_role('MooseX::RemoteName::Meta::Trait::Attribute')
 			;
 
-	return $self->orig(@_)
+	return $self->$orig(@_)
 		unless $attr->has_remote_name ## no critic ( ControlStructures::ProhibitNegativeExpressionsInUnlessAndUntilConditions )
 			&& $attr->has_init_arg
 			&& $attr->remote_name ne $attr->init_arg
