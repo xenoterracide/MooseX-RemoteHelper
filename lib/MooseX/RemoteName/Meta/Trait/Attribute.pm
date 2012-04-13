@@ -41,7 +41,7 @@ around initialize_instance_slot => sub {
 
 	my ( $meta_instance, $instance, $params ) = @_;
 
-	return $self->orig(@_)
+	return $self->$orig(@_)
 		unless $self->has_remote_name ## no critic ( ControlStructures::ProhibitNegativeExpressionsInUnlessAndUntilConditions )
 			&& $self->has_init_arg
 			&& $self->remote_name ne $self->init_arg
