@@ -45,8 +45,13 @@ Moose::Exporter->setup_import_methods(
 
 		has attr => (
 			remote_name => 'Attr',
-			isa         => 'Str',
+			isa         => 'Bool',
 			is          => 'ro',
+			serializer => sub {
+				my ( $attr, $instance ) = @_;
+				return $attr->get_value( $instance ) ? 'Y' : 'N';
+			},
+
 		);
 		__PACKAGE__->meta->make_immutable;
 	}
@@ -63,6 +68,9 @@ they are inconsistent with your Perl API. This module allows you to provide a
 remote name on your attribute. We also allow you to use the remote name as an
 C<init_arg> so that you can more easily construct a response from a remote
 response.
+
+How the attributes work is documented in
+L<MooseX::RemoteName::Meta::Trait::Attribute>
 
 =head1 ACKNOWLEDGMENTS
 

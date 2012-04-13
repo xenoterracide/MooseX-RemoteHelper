@@ -14,6 +14,27 @@ has remote_name => (
 	is        => 'ro',
 );
 
+has serializer => (
+	predicate => 'has_serializer',
+	traits    => ['Code'],
+	is        => 'ro',
+	default   => sub {
+		return sub {
+			my ( $self, $instance ) = @_;
+			return $self->get_value( $instance );
+		}
+	},
+	handles   => {
+		serializing => 'execute_method',
+	},
+);
+
+sub serialized {
+	my ( $self, $instance ) = @_;
+
+	return $self->serializing( $instance );
+}
+
 around initialize_instance_slot => sub {
 	my $orig = shift;
 	my $self = shift;
@@ -37,3 +58,17 @@ around initialize_instance_slot => sub {
 1;
 
 # ABSTRACT: role applied to meta attribute
+
+=method serialized
+
+returns the attributed value by using the L<serializer|/serializer>.
+
+=attr remote_name
+
+the name of the attribute key on the remote host
+
+=attr serializer
+
+a code ref for converting the real value to what the remote host expects
+
+=cut
