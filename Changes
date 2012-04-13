@@ -1,6 +1,10 @@
 Revision history for {{$dist->name}}
 {{$NEXT}}
 
+0.001002  2012-04-13
+	- add meta methods for handling serializing
+	- fix bug where skiping init_arg handling would have broken
+
 0.001001  2012-04-12
 	- don't rename init arg if the remote name is the same as the init arg
 
