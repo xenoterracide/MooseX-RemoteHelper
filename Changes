@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}
 {{$NEXT}}
 
+0.001005  2012-04-13
+	- fix another call to ->orig. refs #639
+
 0.001004  2012-04-13
 	- fix issue where a false value passed to the remote name wouldn't get
 	  used for the value of that attribute, refs #638
