@@ -1,6 +1,10 @@
 Revision history for {{$dist->name}}
 {{$NEXT}}
 
+0.001004  2012-04-13
+	- fix issue where a false value passed to the remote name wouldn't get
+	  used for the value of that attribute, refs #638
+
 0.001003  2012-04-13
 	- fix bug where skiping init_arg handling would have broken in a second
 	  place
