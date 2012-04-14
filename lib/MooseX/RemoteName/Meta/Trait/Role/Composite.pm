@@ -11,7 +11,7 @@ around apply_params => sub {
 	my $orig = shift;
 	my $self = shift;
 
-	$self->orig(@_);
+	$self->$orig(@_);
 
 	$self = Moose::Util::MetaRole::apply_metaroles(
 		for => $self,
