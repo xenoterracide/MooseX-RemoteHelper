@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}
 {{$NEXT}}
 
+0.001006  2012-05-01
+	- rename to MX::RemoteHelper
+
 0.001005  2012-04-13
 	- fix another call to ->orig. refs #639
 
