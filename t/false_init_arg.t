@@ -6,7 +6,7 @@ use Test::Exception;
 {
 	package Test;
 	use Moose;
-	use MooseX::RemoteName;
+	use MooseX::RemoteHelper;
 
 	has attr => (
 		remote_name => 'Attr',

@@ -5,10 +5,10 @@ use Test::More;
 {
 	package Test;
 	use Moose;
-	use MooseX::RemoteName;
+	use MooseX::RemoteHelper;
 
 	has attr => (
-		traits      => ['RemoteName'],
+		traits      => ['RemoteHelper'],
 		remote_name => 'Attr',
 		isa         => 'Str',
 		is          => 'ro',

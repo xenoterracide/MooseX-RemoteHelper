@@ -1,4 +1,4 @@
-package MooseX::RemoteName::Meta::Trait::Role::ApplicationToClass;
+package MooseX::RemoteHelper::Meta::Trait::Role::ApplicationToClass;
 use strict;
 use warnings;
 use namespace::autoclean;
@@ -15,7 +15,7 @@ around apply => sub {
 	$class = Moose::Util::MetaRole::apply_metaroles(
 		for => $class,
 		class_metaroles => {
-			class => ['MooseX::RemoteName::Meta::Trait::Class']
+			class => ['MooseX::RemoteHelper::Meta::Trait::Class']
 		},
 	);
 

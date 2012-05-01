@@ -1,4 +1,4 @@
-package MooseX::RemoteName;
+package MooseX::RemoteHelper;
 use 5.008;
 use strict;
 use warnings;
@@ -8,25 +8,25 @@ use namespace::autoclean;
 
 use Moose 2 ();
 use Moose::Exporter;
-use MooseX::RemoteName::Meta::Trait::Attribute;
+use MooseX::RemoteHelper::Meta::Trait::Attribute;
 
 Moose::Exporter->setup_import_methods(
 	class_metaroles => {
-		attribute => ['MooseX::RemoteName::Meta::Trait::Attribute'],
-		class     => ['MooseX::RemoteName::Meta::Trait::Class'    ],
+		attribute => ['MooseX::RemoteHelper::Meta::Trait::Attribute'],
+		class     => ['MooseX::RemoteHelper::Meta::Trait::Class'    ],
 	},
 	role_metaroles => {
 		role =>
-			['MooseX::RemoteName::Meta::Trait::Role']
+			['MooseX::RemoteHelper::Meta::Trait::Role']
 			,
 		application_to_class =>
-			['MooseX::RemoteName::Meta::Trait::Role::ApplicationToClass']
+			['MooseX::RemoteHelper::Meta::Trait::Role::ApplicationToClass']
 			,
 		application_to_role =>
-			['MooseX::RemoteName::Meta::Trait::Role::ApplicationToRole']
+			['MooseX::RemoteHelper::Meta::Trait::Role::ApplicationToRole']
 			,
 		applied_attribute =>
-			['MooseX::RemoteName::Meta::Trait::Attribute']
+			['MooseX::RemoteHelper::Meta::Trait::Attribute']
 			,
 	},
 );
@@ -41,7 +41,7 @@ Moose::Exporter->setup_import_methods(
 	{
 		package Message;
 		use Moose 2;
-		use MooseX::RemoteName;
+		use MooseX::RemoteHelper;
 
 		has attr => (
 			remote_name => 'Attr',
@@ -70,7 +70,7 @@ C<init_arg> so that you can more easily construct a response from a remote
 response.
 
 How the attributes work is documented in
-L<MooseX::RemoteName::Meta::Trait::Attribute>
+L<MooseX::RemoteHelper::Meta::Trait::Attribute>
 
 =head1 ACKNOWLEDGMENTS
 

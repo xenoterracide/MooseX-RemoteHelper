@@ -1,4 +1,4 @@
-package MooseX::RemoteName::Meta::Trait::Class;
+package MooseX::RemoteHelper::Meta::Trait::Class;
 use strict;
 use warnings;
 use namespace::autoclean;
@@ -16,7 +16,7 @@ around _inline_slot_initializer => sub {
 
 	return @orig_source
 		unless $attr->meta->can('does_role')
-			&& $attr->meta->does_role('MooseX::RemoteName::Meta::Trait::Attribute')
+			&& $attr->meta->does_role('MooseX::RemoteHelper::Meta::Trait::Attribute')
 			;
 
 	return $self->$orig(@_)

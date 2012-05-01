@@ -1,4 +1,4 @@
-package MooseX::RemoteName::Meta::Trait::Role;
+package MooseX::RemoteHelper::Meta::Trait::Role;
 use strict;
 use warnings;
 use namespace::autoclean;
@@ -8,7 +8,7 @@ use namespace::autoclean;
 use Moose::Role;
 
 sub composition_class_roles {
-	return 'MooseX::RemoteName::Meta::Trait::Role::Composite'
+	return 'MooseX::RemoteHelper::Meta::Trait::Role::Composite'
 }
 
 1;

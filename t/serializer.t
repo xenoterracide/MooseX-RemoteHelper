@@ -6,7 +6,7 @@ use Test::Moose;
 {
 	package Test;
 	use Moose;
-	use MooseX::RemoteName;
+	use MooseX::RemoteHelper;
 
 	has attr0 => (
 		isa        => 'Bool',

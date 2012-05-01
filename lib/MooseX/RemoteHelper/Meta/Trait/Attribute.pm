@@ -1,4 +1,4 @@
-package MooseX::RemoteName::Meta::Trait::Attribute;
+package MooseX::RemoteHelper::Meta::Trait::Attribute;
 use strict;
 use warnings;
 use namespace::autoclean;
@@ -6,7 +6,7 @@ use namespace::autoclean;
 # VERSION
 
 use Moose::Role;
-Moose::Util::meta_attribute_alias 'RemoteName';
+Moose::Util::meta_attribute_alias 'RemoteHelper';
 
 has remote_name => (
 	predicate => 'has_remote_name',
