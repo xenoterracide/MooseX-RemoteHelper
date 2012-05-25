@@ -18,7 +18,7 @@ has serializer => (
 	predicate => 'has_serializer',
 	traits    => ['Code'],
 	is        => 'ro',
-	predicate => 'has_serializer',
+	reader    => undef,
 	handles   => {
 		serializing => 'execute_method',
 	},
