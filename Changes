@@ -1,6 +1,10 @@
 Revision history for {{$dist->name}}
 {{$NEXT}}
 
+0.001008  2012-05-24
+	- fix issues where dependancies created in tests are detected as external
+	  deps
+
 0.001007  2012-05-24
 
 	- add MooseX::RemoteHelper::CompositeSerialization Role
