@@ -1,6 +1,10 @@
 Revision history for {{$dist->name}}
 {{$NEXT}}
 
+0.001009  2012-05-24
+	- give no default serializer as we can use this for a check in composite
+	  serializing to make sure it behaves sanely
+
 0.001008  2012-05-24
 	- fix issues where dependancies created in tests are detected as external
 	  deps
