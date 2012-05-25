@@ -46,7 +46,7 @@ around initialize_instance_slot => sub {
 			;
 
 	$params->{ $self->init_arg }
-		= delete $params->{ $self->remote_name }
+		= delete   $params->{ $self->remote_name }
 		if defined $params->{ $self->remote_name }
 		;
 
