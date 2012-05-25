@@ -44,7 +44,7 @@ sub serialize {
 				else {
 					$serialized{ $attr->remote_name }
 						= $value
-						if ! blessed $value
+						unless blessed $value
 						;
 				}
 			}
