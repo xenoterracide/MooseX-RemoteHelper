@@ -23,15 +23,28 @@ sub serialize {
 			if ( $attr->has_remote_name ) {
 				my $value = $attr->get_value( $self );
 
-				if ( blessed $value ) {
-					$serialized{ $attr->remote_name }
-						=  $value->serialize
-						if $value->can('serialize')
-						;
-				}
-				else {
+				# we need to be able to return an explicit undef
+				# run recursively on an sub object that can do this
+				# skip object's that have no way of serializing
+				# and handle non object leafs simply
+
+				# value not blessed just return the leaf
+				if ( $attr->has_serializer ) {
 					$serialized{ $attr->remote_name }
 						= $attr->serialized( $self )
+						;
+				}
+				# is the value a composite object?
+				# we should recursively run this on it
+				elsif ( blessed $value && $value->can('serialize') ) {
+					$serialized{ $attr->remote_name } = $value->serialize;
+				}
+				# is it just a plain old object?
+				# check for a serializer and run that, or ignore
+				else {
+					$serialized{ $attr->remote_name }
+						= $value
+						if ! blessed $value
 						;
 				}
 			}

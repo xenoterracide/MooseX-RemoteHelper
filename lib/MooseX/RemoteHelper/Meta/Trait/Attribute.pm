@@ -18,12 +18,7 @@ has serializer => (
 	predicate => 'has_serializer',
 	traits    => ['Code'],
 	is        => 'ro',
-	default   => sub {
-		return sub {
-			my ( $self, $instance ) = @_;
-			return $self->get_value( $instance );
-		}
-	},
+	predicate => 'has_serializer',
 	handles   => {
 		serializing => 'execute_method',
 	},
@@ -32,7 +27,10 @@ has serializer => (
 sub serialized {
 	my ( $self, $instance ) = @_;
 
-	return $self->serializing( $instance );
+	return $self->has_serializer
+		? $self->serializing( $instance )
+		: $self->get_value( $instance )
+		;
 }
 
 around initialize_instance_slot => sub {

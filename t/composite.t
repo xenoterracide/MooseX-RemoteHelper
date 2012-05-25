@@ -68,6 +68,17 @@ use Data::Dumper;
 		default => sub { Plain->new },
 	);
 
+	has not_as_plain => (
+		remote_name => 'NotAsPlain',
+		isa         => 'Object',
+		is          => 'ro',
+		default     => sub { Plain->new },
+		serializer  => sub {
+			my ( $attr, $instance ) = @_;
+			return $attr->get_value( $instance )->some_value;
+		},
+	);
+
 	has no_val => (
 		remote_name => 'MyName',
 		isa         => 'Str',
@@ -99,6 +110,7 @@ my %expected = (
 	SubName     => 'Baz',
 	SpecialBool => 'Y',
 	NotValue    => undef,
+	NotAsPlain  => 'value',
 	Composite => {
 		SubName => 'Bar',
 	},
