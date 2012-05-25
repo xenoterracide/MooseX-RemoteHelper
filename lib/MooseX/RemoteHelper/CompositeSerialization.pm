@@ -42,3 +42,12 @@ sub serialize {
 
 1;
 # ABSTRACT: Serializing to hashref via Composite pattern
+
+=method serialize
+
+to_json( $obj->serialize )
+
+Recursive serialize to hashref based on the Composite Pattern. Should allow
+easy passing of object to a real serializer.
+
+=cut
