@@ -1,6 +1,10 @@
 Revision history for {{$dist->name}}
 {{$NEXT}}
 
+0.001007  2012-05-24
+
+	- add MooseX::RemoteHelper::CompositeSerialization Role
+
 0.001006  2012-05-01
 	- rename to MX::RemoteHelper
 
