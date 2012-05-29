@@ -1,7 +1,6 @@
 use strict;
 use warnings;
 use Test::More;
-use Test::Exception;
 
 {
 	package Test;
@@ -18,9 +17,6 @@ use Test::Exception;
 	__PACKAGE__->meta->make_immutable;
 }
 
-lives_ok {
-	Test->new({ Attr => 0 });
-} 'false value lives';
-
+new_ok( 'Test' => [{ Attr => 0 }]);
 
 done_testing;
