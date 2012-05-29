@@ -2,7 +2,6 @@ use strict;
 use warnings;
 use Test::More;
 use Test::Moose;
-use Data::Dumper;
 
 {
 	package Plain;
