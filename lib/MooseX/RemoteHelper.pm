@@ -41,7 +41,7 @@ Moose::Exporter->setup_import_methods(
 	{
 		package Message;
 		use Moose 2;
-		with 'MooseX::RemoteHelper::CompositeSerializtion';
+		with 'MooseX::RemoteHelper::CompositeSerialization';
 
 		use MooseX::RemoteHelper;
 
