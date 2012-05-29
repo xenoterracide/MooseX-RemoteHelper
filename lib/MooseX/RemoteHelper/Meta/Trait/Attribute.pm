@@ -63,10 +63,29 @@ returns the attributed value by using the L<serializer|/serializer>.
 
 =attr remote_name
 
-the name of the attribute key on the remote host
+the name of the attribute key on the remote host. if no C<remote_name> is
+provided it should be assumed that the attribute is not used on the remote but
+is instead local only. L<MooseX::RemoteHelper::CompositeSerialization> will
+not serialize an attribute that doesn't have a C<remote_name>
+
+	has perlish => (
+		isa         => 'Str',
+		remote_name => 'MyReallyJavaIshKey',
+		is          => 'ro',
+	);
 
 =attr serializer
 
-a code ref for converting the real value to what the remote host expects
+a code ref for converting the real value to what the remote host expects. it
+requires that you pass the attribute and the instance. e.g.
+
+	has foo_bar => (
+		isa         => 'Bool',
+		remote_name => 'FooBar',
+		serializer  => sub {
+			my ( $attr, $instance ) = @_;
+			return $attr->get_value( $insance ) ? 'T' : 'F';
+		},
+	);
 
 =cut

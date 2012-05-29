@@ -41,10 +41,12 @@ Moose::Exporter->setup_import_methods(
 	{
 		package Message;
 		use Moose 2;
+		with 'MooseX::RemoteHelper::CompositeSerializtion';
+
 		use MooseX::RemoteHelper;
 
-		has attr => (
-			remote_name => 'Attr',
+		has bool => (
+			remote_name => 'Boolean',
 			isa         => 'Bool',
 			is          => 'ro',
 			serializer => sub {
@@ -53,16 +55,24 @@ Moose::Exporter->setup_import_methods(
 			},
 
 		);
+
+		has foo_bar => (
+			remote_name => 'FooBar',
+			isa         => 'Str',
+			is          => 'ro',
+		);
+
 		__PACKAGE__->meta->make_immutable;
 	}
 
-	my $message = Message->new({ Attr => 'foo' });
+	my $message = Message->new({ Boolean => 1, foo_bar => 'Baz', });
 
-	print $message->attr . "\n"; # foo
+	$message->bool;      # 1
+	$message->serialize; # { Boolean => 'Y', FooBar => 'Baz' }
 
 =head1 DESCRIPTION
 
-Many Web APIs have key names that don't look good in a perl API, such as
+Many Remote APIs have key names that don't look good in a perl API, such as
 variants of camel case or even names that you don't want to use simply because
 they are inconsistent with your Perl API. This module allows you to provide a
 remote name on your attribute. We also allow you to use the remote name as an
@@ -72,9 +82,13 @@ response.
 How the attributes work is documented in
 L<MooseX::RemoteHelper::Meta::Trait::Attribute>
 
+for serialize read
+
+L<MooseX::RemoteHelper::CompositeSerialization>
+
 =head1 ACKNOWLEDGMENTS
 
-This code is based or outright copied from L<MooseX::Aliases>
+Some of this code is based on or outright copied from L<MooseX::Aliases>
 
 =over
 
