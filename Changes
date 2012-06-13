@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}
 {{$NEXT}}
 
+0.001011  2012-06-12
+	- non trial release
+
 0.001010  2012-05-28
 	- write documentation
 	- trial release to cpan
