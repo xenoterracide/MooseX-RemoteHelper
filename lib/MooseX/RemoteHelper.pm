@@ -86,6 +86,11 @@ for serialize read
 
 L<MooseX::RemoteHelper::CompositeSerialization>
 
+This module is well tested, but the method, attribute, and module names may be
+subject to change as I haven't decided that I am in love with all of them.
+Also, suggestions welcome to that end. Version will update semantically on API
+change.
+
 =head1 ACKNOWLEDGMENTS
 
 Some of this code is based on or outright copied from L<MooseX::Aliases>
