@@ -9,14 +9,14 @@ use MooseX::Types::Moose -all => { -prefix => 'Moose' };
 
 subtype TrueFalse, as MooseStr,
 	where {
-		$_ =~ m/^(true|false)$/ixms;
+		$_ =~ m/^(true|t|f|false)$/ixms;
 	};
 
 subtype Bool, as MooseBool;
 coerce  Bool, from TrueFalse,
 	via {
 		my $val = lc $_;
-		if ( $val eq 'true' ) {
+		if ( $val =~ m/^t/xms ) {
 			return 1;
 		}
 		return 0;
