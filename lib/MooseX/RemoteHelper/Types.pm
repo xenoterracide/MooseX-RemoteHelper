@@ -23,7 +23,7 @@ coerce  Bool, from TrueFalse,
 	};
 
 1;
-# ABSTRACT: Common Type Coercions
+# ABSTRACT: Types to help with things commonly needed by remotes
 
 =sub Bool
 
