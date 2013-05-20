@@ -24,3 +24,9 @@ coerce  Bool, from TrueFalse,
 
 1;
 # ABSTRACT: Common Type Coercions
+
+=sub Bool
+
+coerces from string where values could match (case insensitive):
+
+	true, t, false, f
