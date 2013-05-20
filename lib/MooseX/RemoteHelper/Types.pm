@@ -1,25 +1,23 @@
 package MooseX::RemoteHelper::Types;
 use strict;
 use warnings;
-use namespace::autoclean;
 
 # VERSION
 
-use MooseX::Types::Moose       qw( Str  );
-use MooseX::Types -declare => [qw( Bool )];
+use MooseX::Types    -declare => [qw( Bool TrueFalse )];
+use MooseX::Types::Moose -all => { -prefix => 'Moose' };
 
 enum TrueFalse, [qw( true false True False )];
 
-subtype Bool, as MooseX::Types::Moose::Bool;
-coerce  Bool, from TrueFalse;
-    via {
-        my $val = lc $_;
-        if ( $val eq 'true' ) {
-            return 1;
-        }
-        elsif ( $val eq 'false' ) {
-            return 0;
-        }
-    };
+subtype Bool, as MooseBool;
+coerce  Bool, from TrueFalse,
+	via {
+		my $val = lc $_;
+		if ( $val eq 'true' ) {
+			return 1;
+		}
+		return 0;
+	};
 
+1;
 # ABSTRACT: Common Type Coercions
