@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}
 {{$NEXT}}
 
+0.001012  2013-05-20
+	- add a type library for commonly needed coercions
+
 0.001011  2012-06-12
 	- non trial release
 
