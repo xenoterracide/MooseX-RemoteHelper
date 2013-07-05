@@ -20,6 +20,6 @@ __PACKAGE__->meta->make_immutable;
 
 =head1 DESCRIPTION
 
-This is mostly useful for auto importing extenstions which are sane when
-dealing with remote api's. Since I work with a lot of remote api's I got tired
+This is mostly useful for auto importing extensions which are sane when
+dealing with remote APIs. Since I work with a lot of remote APIs I got tired
 of writing this class.
