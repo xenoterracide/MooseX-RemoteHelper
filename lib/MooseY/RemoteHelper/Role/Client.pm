@@ -68,9 +68,9 @@ has test  => (
 
 =head1 DESCRIPTION
 
-I've found that most remote clients have the same things in common, L<username>,
-L<password>, a way to transmit L<submit>, need for L<debug> modes, and
-commonly a L<test> mode.
+I've found that most remote clients have the same things in common, L</user>,
+L</pass>, a way to transmit L</submit>, need for L</debug> modes, and
+commonly a L</test> mode.
 
 =method submit
 
@@ -96,7 +96,7 @@ Required
 
 This should be the password, passphrase, or other credential used to
 authenticate your user initially. If for some reason your client doesn't have
-this, set it to an empty string and ignore it in L<submit> method.
+this, set it to an empty string and ignore it in L</submit> method.
 
 =attr debug
 
