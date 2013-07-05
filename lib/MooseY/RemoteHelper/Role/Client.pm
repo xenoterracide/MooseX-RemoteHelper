@@ -54,6 +54,8 @@ has test  => (
 	}
 
 	# consumers debbuging live transactions
+	my $req; # your request object
+
 	my $client
 		= load_class('My::Client')->new({
 			user  => 'Str',
