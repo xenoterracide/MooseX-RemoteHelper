@@ -1,6 +1,10 @@
 Revision history for {{$dist->name}}
 {{$NEXT}}
 
+0.001013  2013-07-08
+	- add MooseY::RemoteHelper::MessagePart
+	- add MooseY::RemoteHelper::Role::Client
+
 0.001012  2013-05-20
 	- add a type library for commonly needed coercions
 
