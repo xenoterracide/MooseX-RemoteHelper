@@ -9,15 +9,18 @@ use MooseX::Types::Moose -all => { -prefix => 'Moose' };
 
 subtype TrueFalse, as MooseStr,
 	where {
-		$_ =~ m/^(true|t|f|false)$/ixms;
+		$_ =~ m/^(true|t|f|false|enabled|disabled)$/ixms;
 	};
 
 subtype Bool, as MooseBool;
 coerce  Bool, from TrueFalse,
 	via {
 		my $val = lc $_;
-		if ( $val =~ m/^t/xms ) {
+		if ( $val =~ m/^t/xms || $val eq 'enabled' ) {
 			return 1;
+		}
+		elsif ( $val eq 'disabled' ) {
+			return 0;
 		}
 		return 0;
 	};
@@ -29,4 +32,4 @@ coerce  Bool, from TrueFalse,
 
 coerces from string where values could match (case insensitive):
 
-	true, t, false, f
+	true, t, false, f, enabled, disabled
