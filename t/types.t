@@ -23,10 +23,14 @@ method_ok $t, test => ['True'    ], 1;
 method_ok $t, test => ['TRUE'    ], 1;
 method_ok $t, test => ['T'       ], 1;
 method_ok $t, test => ['Enabled' ], 1;
+method_ok $t, test => ['Enable'  ], 1;
+method_ok $t, test => ['Yes'     ], 1;
 method_ok $t, test => ['false'   ], 0;
 method_ok $t, test => ['False'   ], 0;
 method_ok $t, test => ['FALSE'   ], 0;
 method_ok $t, test => ['F'       ], 0;
 method_ok $t, test => ['Disabled'], 0;
+method_ok $t, test => ['Disable' ], 0;
+method_ok $t, test => ['No'      ], 0;
 
 done_testing;
