@@ -1,6 +1,10 @@
 Revision history for {{$dist->name}}
 {{$NEXT}}
 
+0.001015  2013-07-25
+	- add Enable/Disable to MooseX::RemoteHelper::Types::Bool
+	- add Y[es]/N[o] to MooseX::RemoteHelper::Types::Bool
+
 0.001014  2013-07-22
 	- add Enabled/Disabled to MooseX::RemoteHelper::Types::Bool
 
