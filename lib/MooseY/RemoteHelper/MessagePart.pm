@@ -13,6 +13,7 @@ use MooseX::Constructor::AllErrors;
 __PACKAGE__->meta->make_immutable;
 1;
 # ABSTRACT: Base class for a part of a message
+# SEEALSO:  MooseX::UndefTolerant, MooseX::Constructor::AllErrors
 
 =head1 SYNOPSIS
 
