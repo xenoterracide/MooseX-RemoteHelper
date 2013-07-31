@@ -8,6 +8,7 @@ use namespace::autoclean;
 use Moose;
 use MooseX::RemoteHelper;
 use MooseX::UndefTolerant;
+use MooseX::Constructor::AllErrors;
 
 __PACKAGE__->meta->make_immutable;
 1;
