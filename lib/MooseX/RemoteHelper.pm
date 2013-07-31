@@ -77,7 +77,6 @@ Moose::Exporter->setup_import_methods(
 	}
 
 	use Try::Tiny;
-	use Safe::Isa;
 
     # note: hardcoding is an example, more likely these values come from user
     # input, or remote system input, so getting undef where you expect a str
@@ -89,21 +88,24 @@ Moose::Exporter->setup_import_methods(
 			optional => undef,
 		});
 
-	$message0->bool;        # 1
-	$message0->has_optional # ''
-	$message0->serialize;   # { Boolean => 'Y', FooBar => 'Baz' }
+	$message0->bool;         # 1
+	$message0->has_optional; # ''
+	$message0->serialize;    # { Boolean => 'Y', FooBar => 'Baz' }
 
+	# you probably want to handle exceptions
 	my $message1
 		= try {
 			Message->new({
 				Boolean  => 'enabled',
-				foo_bar  => undef',
+				foo_bar  => undef,
 			});
 		}
 		catch {
-			my $e = $_;
-			if ( $e->$_isa('MooseX::Constructor::AllErrors::Error::Constructor') {
-				foreach my $error ( $e->errors ) {
+			# note you probably want to use Safe::Isa if you may have more
+			# exceptions
+			if ( $_->isa('MooseX::Constructor::AllErrors::Error::Constructor')
+			) {
+				foreach my $error ( $_->errors ) {
 					# log $error->message
 				}
 			}
