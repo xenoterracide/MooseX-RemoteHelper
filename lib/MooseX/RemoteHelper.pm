@@ -41,15 +41,18 @@ Moose::Exporter->setup_import_methods(
 	{
 		package Message;
 		use Moose 2;
+		extends 'MooseY::RemoteHelper::MessagePart';
 		with 'MooseX::RemoteHelper::CompositeSerialization';
 
 		use MooseX::RemoteHelper;
+		use MooseX::RemoteHelper::Types qw( Bool );
 
 		has bool => (
 			remote_name => 'Boolean',
-			isa         => 'Bool',
+			isa         => Bool,
 			is          => 'ro',
-			serializer => sub {
+			coerce      => 1,
+			serializer  => sub {
 				my ( $attr, $instance ) = @_;
 				return $attr->get_value( $instance ) ? 'Y' : 'N';
 			},
@@ -62,13 +65,29 @@ Moose::Exporter->setup_import_methods(
 			is          => 'ro',
 		);
 
+		has optional => (
+			remote_name => 'Optional',
+			isa         => 'Str',
+			is          => 'ro',
+			predicate   => 'has_optional',
+		);
+
 		__PACKAGE__->meta->make_immutable;
 	}
 
-	my $message = Message->new({ Boolean => 1, foo_bar => 'Baz', });
+    # note: hardcoding is an example, more likely these values come from user
+    # input, or remote system input, so getting undef where you expect a str
+    # is more common, or enabled, where you need a bool
+	my $message
+		= Message->new({
+			Boolean  => 'enabled',
+			foo_bar  => 'Baz',
+			optional => undef,
+		});
 
-	$message->bool;      # 1
-	$message->serialize; # { Boolean => 'Y', FooBar => 'Baz' }
+	$message->bool;        # 1
+	$message->has_optional # ''
+	$message->serialize;   # { Boolean => 'Y', FooBar => 'Baz' }
 
 =head1 DESCRIPTION
 
