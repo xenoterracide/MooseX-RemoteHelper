@@ -92,26 +92,6 @@ Moose::Exporter->setup_import_methods(
 	$message0->has_optional; # ''
 	$message0->serialize;    # { Boolean => 'Y', FooBar => 'Baz' }
 
-	# you probably want to handle exceptions
-	my $message1
-		= try {
-			Message->new({
-				Boolean  => 'enabled',
-				foo_bar  => undef,
-			});
-		}
-		catch {
-			# note you probably want to use Safe::Isa if you may have more
-			# exceptions
-			if ( $_->isa('MooseX::Constructor::AllErrors::Error::Constructor')
-			) {
-				foreach my $error ( $_->errors ) {
-					# log $error->message
-				}
-			}
-		};
-
-
 =head1 DESCRIPTION
 
 Many Remote APIs have key names that don't look good in a perl API, such as
