@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}
 {{$NEXT}}
 
+0.001018  2013-08-01
+	- gah, dzil detected an inline class as a dep, remove, bad dzil
+
 0.001017  2013-08-01
 	- remove MooseX::Constructor::AllErrors in MooseY::RemoteHelper::MessagePart
 	  - see RT #87508
