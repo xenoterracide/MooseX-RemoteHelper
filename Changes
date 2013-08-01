@@ -1,6 +1,10 @@
 Revision history for {{$dist->name}}
 {{$NEXT}}
 
+0.001017  2013-08-01
+	- remove MooseX::Constructor::AllErrors in MooseY::RemoteHelper::MessagePart
+	  - see RT #87508
+
 0.001016  2013-07-31
 	- improve docuementation
 	- use MooseX::Constructor::AllErrors in MooseY::RemoteHelper::MessagePart
