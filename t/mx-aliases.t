@@ -8,7 +8,7 @@ use Test::Requires qw( MooseX::Aliases );
 	use Moose;
 	use MooseX::RemoteHelper;
 	use MooseX::Aliases;
-	
+
 	has attr => (
 		isa         => 'Str',
 		is          => 'ro',
