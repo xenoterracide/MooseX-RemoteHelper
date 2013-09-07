@@ -6,6 +6,7 @@ use namespace::autoclean;
 # VERSION
 
 use Moose::Role;
+use Safe::Isa;
 
 sub serialize {
 	my $self = shift;
@@ -27,21 +28,39 @@ sub serialize {
 				# run recursively on an sub object that can do this
 				# skip object's that have no way of serializing
 				# and handle non object leafs simply
-
-				# value not blessed just return the leaf
 				if ( $attr->has_serializer ) {
 					$serialized{ $attr->remote_name }
 						= $attr->serialized( $self )
 						;
 				}
 				# is the value a composite object?
-				# we should recursively run this on it
-				elsif ( blessed $value && $value->can('serialize') ) {
+				# is it just a plain old object?
+				# check for serialize and run that
+				elsif ( $value->$_can('serialize') ) {
 					$serialized{ $attr->remote_name } = $value->serialize;
 				}
-				# is it just a plain old object?
-				# check for a serializer and run that, or ignore
+				elsif ( ref $value eq 'ARRAY' ) {
+					# let's try to handle array refs of objects if we know
+					# that's what they are
+					if ( $attr->has_type_constraint
+						&& $attr->type_constraint->is_subtype_of('ArrayRef')
+						&& ( $attr->type_constraint
+								->type_parameter
+								->is_subtype_of('Object')
+							|| $attr->type_constraint
+								->type_parameter
+								->is_a_type_of('Object')
+						)
+					) {
+						$serialized{ $attr->remote_name }
+							= [
+								map { $_->can('serialize') ? $_->serialize : () }
+								@{ $value }
+							 ];
+					}
+				}
 				else {
+				# value not blessed just return the leaf
 					$serialized{ $attr->remote_name }
 						= $value
 						unless blessed $value
