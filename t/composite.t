@@ -2,6 +2,7 @@ use strict;
 use warnings;
 use Test::More;
 use Test::Moose;
+use Test::Method;
 
 {
 	package Plain;
@@ -115,6 +116,6 @@ my %expected = (
 	},
 );
 
-is_deeply $comp->serialize, \%expected, 'serialize';
+method_ok $comp, serialize => [], \%expected;
 
 done_testing;
