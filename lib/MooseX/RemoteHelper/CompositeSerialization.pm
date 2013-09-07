@@ -43,14 +43,10 @@ sub serialize {
 					# let's try to handle array refs of objects if we know
 					# that's what they are
 					if ( $attr->has_type_constraint
-						&& $attr->type_constraint->is_subtype_of('ArrayRef')
-						&& ( $attr->type_constraint
-								->type_parameter
-								->is_subtype_of('Object')
-							|| $attr->type_constraint
+						&& $attr->type_constraint->is_a_type_of('ArrayRef')
+						&& $attr->type_constraint
 								->type_parameter
 								->is_a_type_of('Object')
-						)
 					) {
 						$serialized{ $attr->remote_name }
 							= [
