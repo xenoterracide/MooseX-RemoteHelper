@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}
 {{$NEXT}}
 
+0.001019  2013-09-06
+	- Add Support for automatically serializing arrays of objects
+
 0.001018  2013-08-01
 	- gah, dzil detected an inline class as a dep, remove, bad dzil
 
