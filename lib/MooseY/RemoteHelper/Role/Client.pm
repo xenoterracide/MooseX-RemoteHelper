@@ -35,9 +35,10 @@ has test  => (
 
 =head1 SYNOPSIS
 
+	use 5.010;
 	# implementers
 	use Moose;
-	use Class::Load 0.20 'load_class';
+	use Module::Runtime 'use_module';
 
 	with 'MooseY::RemoteHelper::Role::Client';
 
@@ -57,7 +58,7 @@ has test  => (
 	my $req; # your request object
 
 	my $client
-		= load_class('My::Client')->new({
+		= use_module('My::Client')->new({
 			user  => 'Str',
 			pass  => 'Str',
 			test  => 0,
