@@ -2,7 +2,6 @@ use strict;
 use warnings;
 use Test::More;
 use Test::Method;
-use Class::Load 0.20 'load_class';
 
 {
 	package Test;
@@ -16,7 +15,7 @@ use Class::Load 0.20 'load_class';
 	);
 }
 
-my $t = new_ok( load_class('Test') );
+my $t = new_ok( 'Test' );
 
 method_ok $t, test => ['true'    ], 1;
 method_ok $t, test => ['True'    ], 1;
