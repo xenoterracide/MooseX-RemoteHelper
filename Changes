@@ -1,6 +1,10 @@
 Revision history for {{$dist->name}}
 {{$NEXT}}
 
+0.001021  2013-12-30
+	- Remove Class::Load
+	- fix compile tests hanging on windows
+
 0.001020  2013-09-06
 	- Simplification and correctness improvement of last release
 
