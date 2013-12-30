@@ -39,6 +39,7 @@ has test  => (
 	# implementers
 	use Moose;
 	use Module::Runtime 'use_module';
+	use Try::Tiny;
 
 	with 'MooseY::RemoteHelper::Role::Client';
 
