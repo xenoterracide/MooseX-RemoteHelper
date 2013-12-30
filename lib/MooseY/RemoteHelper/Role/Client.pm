@@ -65,7 +65,14 @@ has test  => (
 			debug => 1,
 		});
 
-	my $res = try { $client->submit( $req ) } catch { ... if $_->does('Throwable') };
+	my $res = try {
+			$client->submit( $req )
+		}
+		catch {
+			# ...
+			# if $_->does('Throwable')
+			# ...
+		};
 
 =head1 DESCRIPTION
 
